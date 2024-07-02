@@ -70,9 +70,26 @@
     
 }
 
+.clear{
+    background-color: #DD571C;
+    color: whitesmoke;
+    width: 4em;
+    height: 2em;
+    border-radius: 10%;
+    
+}
+
+.bottomPart{
+    display: flex;
+    height: 2em;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
 .total{
     display: flex;
-    flex: 1;
+    /* flex: 1; */
     margin-top: 16px;
     background-color: whitesmoke;
     height: 2em;
