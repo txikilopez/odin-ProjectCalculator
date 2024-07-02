@@ -1,0 +1,31 @@
+body{
+    box-sizing: border-box;
+
+}
+
+
+.calcOutline{
+    border: 1px solid black;
+    width: 12.2em;
+    height: 13em;
+}
+
+
+.numberButton{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 12.2em;
+    gap: 0.1em;
+    background-color: gray;
+    border: 1px solid black
+}
+
+.numerical{
+    background-color: #555555;
+    color: whitesmoke;
+    width: 4em;
+    height: 2em;
+    border-radius: 10%;
+    
+}
