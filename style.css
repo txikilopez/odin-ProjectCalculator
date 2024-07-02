@@ -1,13 +1,53 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+*{
     box-sizing: border-box;
 
 }
 
 
+.screen{
+    display: flex;
+    height: 4em;
+    border: 1px solid black;
+    margin: 16px;
+    align-items: center;
+    justify-content: right;
+    padding-right: 8px;
+    font-family: Orbitron;
+    background-color: #ECECEC;
+}
+
+.buttonsContainer{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    width: 15em;
+}
+
+
 .calcOutline{
     border: 1px solid black;
-    width: 12.2em;
-    height: 13em;
+    width: 15em;
+    height: 20em;
+    background-color: gray;
+}
+
+.operationButtons{
+    display:flex;
+    flex-direction: column;
+    gap: 0.1em;
+    width: 4.5em;
+}
+
+.operation{
+    background-color: #ffa500;
+    color: whitesmoke;
+    width: 4em;
+    height: 2em;
+    border-radius: 10%;
+    font-family: Orbitron;
+    font-weight: 900;
 }
 
 
@@ -28,4 +68,16 @@ body{
     height: 2em;
     border-radius: 10%;
     
+}
+
+.total{
+    display: flex;
+    flex: 1;
+    margin-top: 16px;
+    background-color: whitesmoke;
+    height: 2em;
+    margin: 0.3em;
+    align-items: center;
+    justify-content: center;
+    width: 10em;
 }
