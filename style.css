@@ -29,7 +29,7 @@
 .calcOutline{
     border: 1px solid black;
     width: 15em;
-    height: 20em;
+    height: 16em;
     background-color: gray;
 }
 
@@ -58,7 +58,7 @@
     width: 12.2em;
     gap: 0.1em;
     background-color: gray;
-    border: 1px solid black
+    /* border: 1px solid black */
 }
 
 .numerical{

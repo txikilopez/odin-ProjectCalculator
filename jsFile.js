@@ -18,26 +18,27 @@ const opRest = "resta";
 
 //Initialize button pad
 for(i=0; i<numericalButtons.length; i++){
-numericalButtons[i].addEventListener("click",(e)=>{
-    let newInput = e.target.textContent;
-    let checkPlusMinusDot = e.target.classList[1];
-    let multiplier = 1;
-    
-    if(checkPlusMinusDot == "plusMinus"){
-        multiplier = -1;
-         newInput="";
-    }
-    
-    if(screen.textContent == 0){screen.textContent = ""}
+    numericalButtons[i].addEventListener("click",(e)=>{
+        let newInput = e.target.textContent;
+        let checkPlusMinusDot = e.target.classList[1];
+        let multiplier = 1;
+        
+        if(checkPlusMinusDot == "plusMinus"){
+            multiplier = -1;
+            newInput="";
+        }
+        
+        if(screen.textContent == 0){screen.textContent = ""}
 
-    if(screen.textContent.length < 8){
-        screen.textContent = screen.textContent + newInput;
-        if(checkPlusMinusDot != "dot"){
-            screen.textContent = multiplier * (+screen.textContent);}
-        currentNumber = screen.textContent;
-}})
+        if(screen.textContent.length < 8){
+            screen.textContent = screen.textContent + newInput;
+            if(checkPlusMinusDot != "dot"){
+                screen.textContent = multiplier * (+screen.textContent);}
+            currentNumber = screen.textContent;
+    }})
 }
 
+//operation button pressing
 operationButtons.addEventListener("click",e=>{
     let selection = e.target.classList[1]
     operatorPressed = captureOperator(selection);
@@ -51,16 +52,24 @@ operationButtons.addEventListener("click",e=>{
         } 
 )
 
+//equal button
 totalButton.addEventListener("click",(e)=>{
-    console.log(+savedNumber);
-    console.log(+currentNumber);
-
     result = (operate(+savedNumber,+currentNumber,operatorPressed).toString());
     if (result.length >10){result = result.substring(0,10);}
     screen.textContent = result;
+    savedNumber = result;
 })
 
+//ClearButton
+clearButton.addEventListener("click",(e)=>{
+    screen.textContent = 0;
+    currentNumber = 0;
+    savedNumber = 0;
+    resultCalc =0;
+    operatorPressed=""; 
+})
 
+//Functions
 function captureOperator(str){
     // console.log(str);
     let auxVar = "";
@@ -80,18 +89,6 @@ function captureOperator(str){
     }
     return auxVar;
 }
-
-
-
-clearButton.addEventListener("click",(e)=>{
-    screen.textContent = 0;
-    currentNumber = 0;
-    savedNumber = 0;
-    resultCalc =0;
-    operatorPressed=""; 
-})
-
-
 
 
 function suma(a,b){
