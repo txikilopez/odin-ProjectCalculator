@@ -1,6 +1,7 @@
 let screen = document.querySelector(".screen");
 
 let numericalButtons = document.querySelectorAll(".numerical");
+let numberPad = document.querySelector(".numberButton");
 let operationButtons = document.querySelector(".operationButtons");
 let clearButton = document.querySelector(".clear");
 let totalButton = document.querySelector(".total");
@@ -27,13 +28,25 @@ operationButtons.addEventListener("click",e=>{
     let selection = e.target.classList[1]
     operatorPressed = captureOperator(selection);
     savedNumber = currentNumber;
-    }
-
+    
+//clear screencontent to start again
+    numberPad.addEventListener("click",(e)=>{
+            screen.textContent=e.target.textContent;
+        },{once:true})
+        } 
 )
+
+totalButton.addEventListener("click",(e)=>{
+    console.log(+savedNumber);
+    console.log(+currentNumber);
+
+    result = operate(+savedNumber,+currentNumber,operatorPressed);
+    screen.textContent = result;
+})
 
 
 function captureOperator(str){
-    console.log(str);
+    // console.log(str);
     let auxVar = "";
     switch(str){
     case "multiply":
@@ -54,10 +67,12 @@ function captureOperator(str){
 
 
 
-
 clearButton.addEventListener("click",(e)=>{
     screen.textContent = 0;
-
+    currentNumber = 0;
+    savedNumber = 0;
+    resultCalc =0;
+    operatorPressed=""; 
 })
 
 
