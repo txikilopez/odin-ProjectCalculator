@@ -17,9 +17,21 @@ const opRest = "resta";
 
 for(i=0; i<numericalButtons.length; i++){
 numericalButtons[i].addEventListener("click",(e)=>{
+    let newInput = e.target.textContent;
+    let checkPlusMinusDot = e.target.classList[1];
+    let multiplier = 1;
+    
+    if(checkPlusMinusDot == "plusMinus"){
+        multiplier = -1;
+         newInput="";
+    }
+    
     if(screen.textContent == 0){screen.textContent = ""}
+
     if(screen.textContent.length < 8){
-        screen.textContent = screen.textContent + e.target.textContent;
+        screen.textContent = screen.textContent + newInput;
+        if(checkPlusMinusDot != "dot"){
+            screen.textContent = multiplier * (+screen.textContent);}
         currentNumber = screen.textContent;
 }})
 }
@@ -32,6 +44,7 @@ operationButtons.addEventListener("click",e=>{
 //clear screencontent to start again
     numberPad.addEventListener("click",(e)=>{
             screen.textContent=e.target.textContent;
+            currentNumber = screen.textContent;
         },{once:true})
         } 
 )
@@ -40,7 +53,8 @@ totalButton.addEventListener("click",(e)=>{
     console.log(+savedNumber);
     console.log(+currentNumber);
 
-    result = operate(+savedNumber,+currentNumber,operatorPressed);
+    result = (operate(+savedNumber,+currentNumber,operatorPressed).toString());
+    if (result.length >10){result = result.substring(0,10);}
     screen.textContent = result;
 })
 
