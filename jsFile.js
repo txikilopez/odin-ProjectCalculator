@@ -15,6 +15,8 @@ const opDiv = "division";
 const opSum = "suma";
 const opRest = "resta";
 
+
+//Initialize button pad
 for(i=0; i<numericalButtons.length; i++){
 numericalButtons[i].addEventListener("click",(e)=>{
     let newInput = e.target.textContent;
