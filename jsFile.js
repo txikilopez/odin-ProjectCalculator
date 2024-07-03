@@ -1,5 +1,10 @@
-let screen = document.querySelector(".screen");
+//pending -- multiple dots per string
+//pending -- operator button calculates
 
+// things that don't work in the example calc: 6-66, doesn't allow it.
+// another case (5-5.2 goes to 0)
+
+let screen = document.querySelector(".screen");
 let numericalButtons = document.querySelectorAll(".numerical");
 let numberPad = document.querySelector(".numberButton");
 let operationButtons = document.querySelector(".operationButtons");
@@ -40,6 +45,7 @@ for(i=0; i<numericalButtons.length; i++){
 
 //operation button pressing
 operationButtons.addEventListener("click",e=>{
+    if(e.target.computedRole === "button"){
     let selection = e.target.classList[1]
     operatorPressed = captureOperator(selection);
     savedNumber = currentNumber;
@@ -49,7 +55,8 @@ operationButtons.addEventListener("click",e=>{
             screen.textContent=e.target.textContent;
             currentNumber = screen.textContent;
         },{once:true})
-        } 
+    }
+    } 
 )
 
 //equal button
@@ -58,6 +65,10 @@ totalButton.addEventListener("click",(e)=>{
     if (result.length >10){result = result.substring(0,10);}
     screen.textContent = result;
     currentNumber = result;
+    numberPad.addEventListener("click",(e)=>{
+        screen.textContent=e.target.textContent;
+        currentNumber = screen.textContent;
+    },{once:true})
 })
 
 //ClearButton
