@@ -43,8 +43,8 @@ operationButtons.addEventListener("click",e=>{
     let selection = e.target.classList[1]
     operatorPressed = captureOperator(selection);
     savedNumber = currentNumber;
-    
-//clear screencontent to start again
+
+    //clear screencontent to start again
     numberPad.addEventListener("click",(e)=>{
             screen.textContent=e.target.textContent;
             currentNumber = screen.textContent;
@@ -57,7 +57,7 @@ totalButton.addEventListener("click",(e)=>{
     result = (operate(+savedNumber,+currentNumber,operatorPressed).toString());
     if (result.length >10){result = result.substring(0,10);}
     screen.textContent = result;
-    savedNumber = result;
+    currentNumber = result;
 })
 
 //ClearButton
