@@ -1,3 +1,64 @@
+let screen = document.querySelector(".screen");
+
+let numericalButtons = document.querySelectorAll(".numerical");
+let operationButtons = document.querySelector(".operationButtons");
+let clearButton = document.querySelector(".clear");
+let totalButton = document.querySelector(".total");
+let currentNumber = 0;
+let savedNumber = 0;
+let operatorPressed = "";
+let resultCalc =0;
+
+const opMult = "multiplicacion";
+const opDiv = "division";
+const opSum = "suma";
+const opRest = "resta";
+
+for(i=0; i<numericalButtons.length; i++){
+numericalButtons[i].addEventListener("click",(e)=>{
+    if(screen.textContent == 0){screen.textContent = ""}
+    if(screen.textContent.length < 8){
+        screen.textContent = screen.textContent + e.target.textContent;
+        currentNumber = screen.textContent;
+}})
+}
+
+operationButtons.addEventListener("click",e=>{
+    let selection = e.target.classList[1]
+    operatorPressed = captureOperator(selection);
+    savedNumber = currentNumber;
+    }
+
+)
+
+
+function captureOperator(str){
+    console.log(str);
+    let auxVar = "";
+    switch(str){
+    case "multiply":
+        auxVar = opMult;
+        break;
+    case "divide":
+        auxVar = opDiv;
+        break;
+    case "plus":
+        auxVar = opSum;
+        break;
+    case "minus":
+        auxVar = opRest;
+        break;
+    }
+    return auxVar;
+}
+
+
+
+
+clearButton.addEventListener("click",(e)=>{
+    screen.textContent = 0;
+
+})
 
 
 
@@ -19,20 +80,21 @@ function dividir(a,b){
     return a/b;
 }
 
+
 function operate(num1,num2,operator){
     let calcResult = 0;
 
     switch(operator){
-        case "suma":
+        case opSum:
             calcResult =  suma(num1,num2);
             break;
-        case "resta":
+        case opRest:
             calcResult = resta(num1,num2);
             break;
-        case "division":
+        case opDiv:
             calcResult = dividir(num1,num2);
             break;
-        case "multiplicacion":
+        case opMult:
             calcResult = multiplicar(num1,num2);
             break;
     }

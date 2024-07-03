@@ -70,6 +70,10 @@
     
 }
 
+#dot, #plusMinus {
+    background-color: lightgrey;
+}
+
 .clear{
     background-color: #DD571C;
     color: whitesmoke;
