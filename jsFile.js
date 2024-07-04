@@ -1,5 +1,5 @@
-//pending -- multiple dots per string
 //pending -- operator button calculates
+// can't add zeros on decimal places input
 
 // things that don't work in the example calc: 6-66, doesn't allow it.
 // another case (5-5.2 goes to 0)
@@ -32,6 +32,8 @@ numberPad.addEventListener("click",(e)=>{
             multiplier = -1;
             newInput="";
         }
+
+        if(currentNumber.toString().includes(".") && checkPlusMinusDot === "dot"){newInput="";}
         
         
         if(screen.textContent === 0){screen.textContent = ""}
