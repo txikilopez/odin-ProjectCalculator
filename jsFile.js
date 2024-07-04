@@ -22,53 +22,59 @@ const opRest = "resta";
 
 
 //Initialize button pad
-for(i=0; i<numericalButtons.length; i++){
-    numericalButtons[i].addEventListener("click",(e)=>{
+numberPad.addEventListener("click",(e)=>{
+    if(e.target.computedRole ==="button"){
         let newInput = e.target.textContent;
         let checkPlusMinusDot = e.target.classList[1];
         let multiplier = 1;
-        
+
         if(checkPlusMinusDot == "plusMinus"){
             multiplier = -1;
             newInput="";
         }
         
-        if(screen.textContent == 0){screen.textContent = ""}
+        
+        if(screen.textContent === 0){screen.textContent = ""}
 
         if(screen.textContent.length < 8){
             screen.textContent = screen.textContent + newInput;
             if(checkPlusMinusDot != "dot"){
-                screen.textContent = multiplier * (+screen.textContent);}
+                screen.textContent = multiplier * (screen.textContent);}
             currentNumber = screen.textContent;
-    }})
-}
+        
+    }
+}})
+
+
+
 
 //operation button pressing
 operationButtons.addEventListener("click",e=>{
     if(e.target.computedRole === "button"){
     let selection = e.target.classList[1]
     operatorPressed = captureOperator(selection);
+    
     savedNumber = currentNumber;
+    
 
     //clear screencontent to start again
     numberPad.addEventListener("click",(e)=>{
+        if(e.target.computedRole === "button"){
             screen.textContent=e.target.textContent;
             currentNumber = screen.textContent;
-        },{once:true})
+        }},{once:true})
     }
     } 
 )
 
 //equal button
 totalButton.addEventListener("click",(e)=>{
-    result = (operate(+savedNumber,+currentNumber,operatorPressed).toString());
-    if (result.length >10){result = result.substring(0,10);}
-    screen.textContent = result;
-    currentNumber = result;
+    showResult();
     numberPad.addEventListener("click",(e)=>{
+        if(e.target.computedRole === "button"){
         screen.textContent=e.target.textContent;
         currentNumber = screen.textContent;
-    },{once:true})
+    }},{once:true})
 })
 
 //ClearButton
@@ -81,6 +87,17 @@ clearButton.addEventListener("click",(e)=>{
 })
 
 //Functions
+
+function showResult(){
+
+    result = (operate(+savedNumber,+currentNumber,operatorPressed).toString());
+    
+    if (result.length >10){result = result.substring(0,10);}
+    screen.textContent = result;
+    currentNumber = result;
+}
+
+
 function captureOperator(str){
     // console.log(str);
     let auxVar = "";
