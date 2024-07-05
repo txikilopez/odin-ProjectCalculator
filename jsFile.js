@@ -45,9 +45,6 @@ numberPad.addEventListener("click",(e)=>{
     }
 }})
 
-
-
-
 //operation button pressing
 operationButtons.addEventListener("click",e=>{
     if(e.target.computedRole === "button"){
@@ -55,7 +52,6 @@ operationButtons.addEventListener("click",e=>{
     operatorPressed = captureOperator(selection);
     
     savedNumber = currentNumber;
-    
 
     //clear screencontent to start again
     numberPad.addEventListener("click",(e)=>{
@@ -64,15 +60,18 @@ operationButtons.addEventListener("click",e=>{
             currentNumber = screen.textContent;
         }},{once:true})
     }
-    } 
-)
+    })
 
 //equal button
 totalButton.addEventListener("click",(e)=>{
     showResult();
+
     numberPad.addEventListener("click",(e)=>{
+        let checkPlusMinusDot = e.target.classList[2];
         if(e.target.computedRole === "button"){
-        screen.textContent=e.target.textContent;
+            if(checkPlusMinusDot === "notNumber"){textForOutput = 0;}
+            else {textForOutput = e.target.textContent;}
+        screen.textContent=textForOutput;
         currentNumber = screen.textContent;
     }},{once:true})
 })
