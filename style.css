@@ -8,7 +8,7 @@
 
 .screen{
     display: flex;
-    height: 4em;
+    height: 3em;
     border: 1px solid black;
     margin: 16px;
     align-items: center;
@@ -29,7 +29,7 @@
 .calcOutline{
     border: 1px solid black;
     width: 15em;
-    height: 16em;
+    height: 15em;
     background-color: gray;
 }
 
@@ -71,7 +71,7 @@
 }
 
 #dot, #plusMinus {
-    background-color: lightgrey;
+    background-color: #7393B3;
 }
 
 .clear{
