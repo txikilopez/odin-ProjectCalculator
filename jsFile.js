@@ -19,7 +19,7 @@ const opRest = "resta";
 //Initialize button pad
 numberPad.addEventListener("click",(e)=>{
 
-    if(e.target.role ==="button"){
+    if(e.target.computedRole ==="button"){
         let newInput = e.target.textContent;
         let checkPlusMinusDot = e.target.classList[1];
         let multiplier = 1;
@@ -44,7 +44,7 @@ numberPad.addEventListener("click",(e)=>{
 //operational button pressing
 operationButtons.addEventListener("click",e=>{
 
-    if(e.target.role === "button"){
+    if(e.target.computedRole === "button"){
     let selection = e.target.classList[1]
     operatorPressedLast = operatorPressed;
     operatorPressed = captureOperator(selection);
@@ -67,7 +67,7 @@ operationButtons.addEventListener("click",e=>{
     //clear screencontent to start again
     numberPad.addEventListener("click",(e)=>{
         let checkPlusMinusDot = e.target.classList[2];
-        if(e.target.role === "button"){
+        if(e.target.computedRole === "button"){
                 if(checkPlusMinusDot === "notNumber"){textForOutput = 0;}
                 else {textForOutput = e.target.textContent;}
             screen.textContent=textForOutput;
@@ -88,7 +88,7 @@ totalButton.addEventListener("click",(e)=>{
 
     numberPad.addEventListener("click",(e)=>{
         let checkPlusMinusDot = e.target.classList[2];
-        if(e.target.computedrole === "button"){
+        if(e.target.computedRole === "button"){
             if(checkPlusMinusDot === "notNumber"){textForOutput = 0;}
             else {textForOutput = e.target.textContent;}
         screen.textContent=textForOutput;
