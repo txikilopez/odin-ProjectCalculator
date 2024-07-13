@@ -1,7 +1,4 @@
-//pending -- operator button calculates
 
-// things that don't work in the example calc: 6-66, doesn't allow it.
-// another case (5-5.2 goes to 0)
 
 let screen = document.querySelector(".screen");
 let numberPad = document.querySelector(".numberButton");
